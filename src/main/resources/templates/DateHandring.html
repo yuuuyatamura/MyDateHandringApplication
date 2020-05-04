@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<script type="text/javascript" src="comm.js"></script>
     <meta charset="UTF-8"></meta>
     <title>日付計算画面</title>
 </head>
 <body>
     <h1>日付計算画面</h1>
-    <form method="post" action="/hello">
-        <!-- ポイント：th:value -->
-        好きな文字を入力：<input type="text" name="text1" th:value="${text1_value}" />
-        <input type="submit" value="クリック" />
-    </form>
-    <br />
-    <form method="post" action="/hello/db">
-        従業員IDを入力：<input type="text" name="text2" th:value="${text2_value}" />
-        <input type="submit" value="クリック" />
+    <form method="post" action="/date/register">
+	<a href="/date/handring">計算実行（これから実装）</a>
+	<a href="/date">新規登録</a>
+	<a href="/date/update">更新</a>
+	<a href="/date">削除（これから実装）</a>
+        <!-- <button type="submit" onclick="transferhandring();return false()" value="更新" >更新</button>
+        <button type="submit" onclick="'./DateRegister.html'" value="戻る" >戻る</button> -->
     </form>
 <body>
 </html>
+
