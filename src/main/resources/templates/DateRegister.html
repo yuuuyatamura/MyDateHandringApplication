@@ -2,17 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <script type="text/javascript" src="comm.js"></script>
-    <meta charset="UTF-8"></meta>
-    <title>日付登録画面</title>
+<meta charset="UTF-8"></meta>
+<title>日付登録画面</title>
+<!-- UIkit CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/css/uikit.min.css" />
+
+<!-- jQuery is required -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- UIkit JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit-icons.min.js"></script>
 </head>
 <body>
-    <h1>日付登録画面</h1>
-    <form method="post" action="/date/register">
-	<a href="/date/handring">更新</a>
-	<a href="/date">戻る</a>
-        <!-- <button type="submit" onclick="transferhandring();return false()" value="更新" >更新</button>
-        <button type="submit" onclick="'./DateRegister.html'" value="戻る" >戻る</button> -->
-    </form>
+	<div class="uk-container">
+		<div class="uk-card uk-card-body uk-card-primary">
+			<h1>日付登録画面</h1>
+			<!-- <form action="#" method="post" action="/date/register"> -->
+			<form method="post" action="/date/register">
+				<fieldset class="uk-fieldset">
+					<legend class="uk-legend">日付ID</legend>
+					<input type="text" name="dateId">
+					<legend class="uk-legend">日付名</legend>
+					<input type="text" name="dateName">
+					<legend class="uk-legend">加減値(年)</legend>
+					<input type="text" placeholder="1" name="adjustmentYear">
+					<legend class="uk-legend">加減値(月)</legend>
+					<input type="text" placeholder="1" name="adjustmentMonth">
+					<legend class="uk-legend">加減値(日))</legend>
+					<input type="text" placeholder="1" name="adjustmentDay">
+					<br>
+				</fieldset>
+
+				<!-- <a href="/date/handring">更新</a>
+				<a href="/date">戻る</a> -->
+
+				<a id="registerButton" class="uk-button uk-button-default" href="/date/handring">更新</a>
+				<a id="backGround" class="uk-button uk-button-default uk-align-right" href="/date">戻る</a>
+			</form>
+		</div>
+	</div>
 <body>
 </html>
 

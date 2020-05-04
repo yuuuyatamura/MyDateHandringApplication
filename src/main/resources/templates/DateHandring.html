@@ -4,17 +4,28 @@
 <script type="text/javascript" src="comm.js"></script>
     <meta charset="UTF-8"></meta>
     <title>日付計算画面</title>
+            <!-- UIkit CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/css/uikit.min.css" />
+
+		<!-- jQuery is required -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- UIkit JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit-icons.min.js"></script>
 </head>
 <body>
+<div class="uk-container">
+    <div class="uk-card uk-card-body uk-card-primary">
     <h1>日付計算画面</h1>
     <form method="post" action="/date/register">
 	<a href="/date/handring">計算実行（これから実装）</a>
 	<a href="/date">新規登録</a>
 	<a href="/date/update">更新</a>
 	<a href="/date">削除（これから実装）</a>
-        <!-- <button type="submit" onclick="transferhandring();return false()" value="更新" >更新</button>
-        <button type="submit" onclick="'./DateRegister.html'" value="戻る" >戻る</button> -->
     </form>
+    </div>
+</div>
 <body>
 </html>
 
