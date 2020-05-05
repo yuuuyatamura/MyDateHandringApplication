@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.DateHandring.domain.CalculateForm;
 import com.example.DateHandring.domain.DateFormula;
@@ -31,7 +32,6 @@ public class DateHandringController {
 
 //日付計算画面に遷移
 	//TODO：計算に応じてエラー文言出す
-//	@RequestMapping(value = "DateRegister", method = RequestMethod.POST)
 	@PostMapping("/date")
 	public String register(@ModelAttribute("dateFormula") DateFormula dateFormula, Model model) {
 		service.register(dateFormula);
@@ -41,7 +41,18 @@ public class DateHandringController {
 
 //日付登録画面に遷移
 	@GetMapping("/date/handring")
-	public String create(CalculateForm calform, Model model) {
+	public String create(CalculateForm calform, Model model, RedirectAttributes redirectAttributes) {
+
+		DateFormula dateFormula = new DateFormula();
+		dateFormula.setDateId(dateFormula.getDateId());
+		dateFormula.setDateName(dateFormula.getDateName());
+		dateFormula.setAdjustmentYear(dateFormula.getAdjustmentYear());
+		dateFormula.setAdjustmentMonth(dateFormula.getAdjustmentMonth());
+		dateFormula.setAdjustmentDay(dateFormula.getAdjustmentDay());
+
+		DateHandringService.insert(dateFormula);
+		redirectAttributes.addFlashAttribute("sucsess", "登録が成功しました");
+
 		model.addAttribute("CalculateForm",calform);
 		return "DateHandring";
 	}
