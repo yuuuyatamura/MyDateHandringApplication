@@ -3,6 +3,7 @@ package com.example.DateHandring.domain;
 import lombok.Data;
 
 //@Data付けてるからgetter、setterいらない
+
 @Data
 public class DateFormula {
 
