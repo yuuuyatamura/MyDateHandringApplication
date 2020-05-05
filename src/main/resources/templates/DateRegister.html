@@ -22,24 +22,21 @@
 	<div class="uk-container">
 		<div class="uk-card uk-card-body uk-card-primary">
 			<h1>日付登録画面</h1>
-			<!-- <form action="#" method="post" action="/date/register"> -->
-			<form method="post" action="/date/register">
+			<form action="#" method="post" th:action="@{/register}">
+			<!-- <form method="post" action="/date/register"> -->
 				<fieldset class="uk-fieldset">
 					<legend class="uk-legend">日付ID</legend>
-					<input type="text" name="dateId">
+					<input type="text" name="dateId" placeholder="D0001" th:field="*{dateFormula.dateId}">
 					<legend class="uk-legend">日付名</legend>
-					<input type="text" name="dateName">
+					<input type="text" name="dateName" placeholder="先月" th:field="*{dateFormula.dateName}">
 					<legend class="uk-legend">加減値(年)</legend>
-					<input type="text" placeholder="1" name="adjustmentYear">
+					<input type="text" placeholder="1" name="adjustmentYear" th:field="*{dateFormula.adjustmentYear}">
 					<legend class="uk-legend">加減値(月)</legend>
-					<input type="text" placeholder="1" name="adjustmentMonth">
+					<input type="text" placeholder="1" name="adjustmentMonth" th:field="*{dateFormula.adjustmentMonth}">
 					<legend class="uk-legend">加減値(日))</legend>
-					<input type="text" placeholder="1" name="adjustmentDay">
+					<input type="text" placeholder="1" name="adjustmentDay" th:field="*{dateFormula.adjustmentDay}">
 					<br>
 				</fieldset>
-
-				<!-- <a href="/date/handring">更新</a>
-				<a href="/date">戻る</a> -->
 
 				<a id="registerButton" class="uk-button uk-button-default" href="/date/handring">更新</a>
 				<a id="backGround" class="uk-button uk-button-default uk-align-right" href="/date">戻る</a>
