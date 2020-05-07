@@ -21,15 +21,15 @@ public class DateHandringController {
 	@Autowired
 	private DateHandringService service;
 
-////	@RequestMapping(value = "/date",method = RequestMethod.GET)
-//	@GetMapping("/date")
-//	public String index() {
-//		return "DateRegister";
-//	}
+//	@RequestMapping(value = "/date",method = RequestMethod.GET)
+	@GetMapping("/date")
+	public String index() {
+		return "DateRegister";
+	}
 
 //日付計算画面に遷移
 	//TODO：計算に応じてエラー文言出す
-	@GetMapping("/date")
+	@PostMapping("/date")
 	public String index(@ModelAttribute("dateFormula") DateFormula dateFormula, Model model) {
 //		service.create(dateFormula);
 		model.addAttribute("calculateForm", new CalculateForm());
@@ -54,7 +54,7 @@ public class DateHandringController {
 		return "DateHandring";
 	}
 
-	@PostMapping("/date/handring")
+	@GetMapping("/date/handring")
 	public String postHandringRequest() {
 
 		return "DateHandring";
