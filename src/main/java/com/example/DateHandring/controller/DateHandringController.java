@@ -18,6 +18,7 @@ public class DateHandringController {
 	/**
 	 * 日付計算処理
 	 */
+
 	@Autowired
 	private DateHandringService service;
 
@@ -28,7 +29,6 @@ public class DateHandringController {
 	}
 
 //日付計算画面に遷移
-	//TODO：計算に応じてエラー文言出す
 	@PostMapping("/date")
 	public String index(@ModelAttribute("dateFormula") DateFormula dateFormula, Model model) {
 //		service.create(dateFormula);
