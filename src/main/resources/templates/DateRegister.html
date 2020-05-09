@@ -24,17 +24,26 @@
 			<h1>日付登録画面</h1>
 			<form action="#" method="post" th:action="@{/date/handring}" th:object="${dateFormula}">
 				<fieldset class="uk-fieldset">
-					<legend class="uk-legend">日付ID</legend>
+					<legend class="uk-legend">
+					<label for = "id">日付ID</label>
 					<input id="id" type="text" name="dateId" placeholder="D0001" th:value="${dateId}">
-					<legend class="uk-legend">日付名</legend>
+					</legend>
+					<legend class="uk-legend">
+					<label for = "name">日付名</label>
 					<input id="name" type="text" name="dateName" placeholder="先月" th:value="${dateName}">
-					<legend class="uk-legend">加減値(年)</legend>
+					</legend>
+					<legend class="uk-legend">
+					<label for = "year">加減値(年)</label>
 					<input id="year" type="text" placeholder="1" name="adjustmentYear" th:value="${adjustmentYear}">
-					<legend class="uk-legend">加減値(月)</legend>
+					</legend>
+					<legend class="uk-legend">
+					<label for="month">加減値(月)</label>
 					<input id="month" type="text" placeholder="1" name="adjustmentMonth" th:value="${adjustmentMonth}">
-					<legend class="uk-legend">加減値(日))</legend>
+					</legend>
+					<legend class="uk-legend">
+					<label for="day">加減値(日))</label>
 					<input id="day" type="text" placeholder="1" name="adjustmentDay" th:value="${adjustmentDay}">
-					<br>
+					</legend>
 				</fieldset>
 
 				<a id="registerButton" class="uk-button uk-button-default" href="/date/handring">更新</a>
