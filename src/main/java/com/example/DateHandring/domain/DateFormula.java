@@ -7,9 +7,11 @@ import lombok.Data;
 @Data
 public class DateFormula {
 
-	private int dateId;
-	private String dateName;
-	private int adjustmentYear;
-	private int adjustmentMonth;
-	private int adjustmentDay;
+	public DateFormula() {}
+
+	private int id;
+	private String name;
+	private int year;
+	private int month;
+	private int day;
 }
