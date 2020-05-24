@@ -1,72 +1,49 @@
 package com.example.DateHandring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.DateHandring.domain.CalculateForm;
-import com.example.DateHandring.domain.DateFormula;
+import com.example.DateHandring.domain.Result;
+import com.example.DateHandring.domain.SimulationForm;
 import com.example.DateHandring.service.DateHandringService;
 
 @Controller
+//@RequestMapping("/date/handring")
 public class DateHandringController {
-
-	/**
-	 * 日付計算処理
-	 */
 
 	@Autowired
 	private DateHandringService service;
 
-//	@RequestMapping(value = "/date",method = RequestMethod.GET)
-	@GetMapping("/date")
-	public String index() {
-		return "DateRegister";
-	}
-
-//日付計算画面に遷移
-	@PostMapping("/date")
-	public String index(@ModelAttribute("dateFormula") DateFormula dateFormula, Model model) {
-//		service.create(dateFormula);
-		model.addAttribute("calculateForm", new CalculateForm());
-		return "DateHandring";
-	}
-
 //日付登録画面に遷移
-	@PostMapping("/date/handring")
-	public String create(@ModelAttribute CalculateForm calform, Model model, RedirectAttributes redirectAttributes) {
-
-		DateFormula dateFormula = new DateFormula();
-		dateFormula.setDateId(dateFormula.getDateId());
-		dateFormula.setDateName(dateFormula.getDateName());
-		dateFormula.setAdjustmentYear(dateFormula.getAdjustmentYear());
-		dateFormula.setAdjustmentMonth(dateFormula.getAdjustmentMonth());
-		dateFormula.setAdjustmentDay(dateFormula.getAdjustmentDay());
-
-		service.insert(dateFormula);
-		redirectAttributes.addFlashAttribute("sucsess", "登録が成功しました");
-
-		model.addAttribute("CalculateForm",calform);
+	@GetMapping("/")
+	public String postHandringRequest(@ModelAttribute SimulationForm form) {
+		System.out.println("画面の初期表示");
 		return "DateHandring";
 	}
 
-	@GetMapping("/date/handring")
-	public String postHandringRequest() {
 
+	@PostMapping("/")
+	public String index(@ModelAttribute @Validated SimulationForm form,BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			return "DateHandring";
+		}
+
+		SimulationForm resultForm = new SimulationForm(form.getBaseDate(), service.search());
+//		System.out.println("確認①" + resultForm);
+		List<Result> result = resultForm.getResults();
+//		System.out.println("確認②" + result);
+
+		result.stream().forEach(e -> e.setCalculated(service.calculate(form.getBaseDate(), e.getFormula())));
+//		System.out.println("確認③");
+		model.addAttribute("result", result);
 		return "DateHandring";
-	}
-
-	@GetMapping("/date/update")
-	public String getUpdate() {
-		return "DateUpdate";
-	}
-	@PostMapping("/date/update")
-	public String postUpdate() {
-
-		return "DateUpdate";
 	}
 }
