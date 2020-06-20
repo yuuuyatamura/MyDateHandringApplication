@@ -5,17 +5,19 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * 日付計算処理をシミュレートする画面を表現するフォームビーンです。
  *
- * @author koujienami
+ * @author Yuya Tamura
  */
 public class SimulationForm {
 
 	/** 計算基準日 */
 	@NotBlank
 	@Pattern(regexp = "((19|[2-9][0-9])[0-9]{2})(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])")
+	@Size(min = 8, max = 8)
 	private String baseDate;
 	/** 計算結果 */
 	private List<Result> results;
@@ -28,7 +30,6 @@ public class SimulationForm {
 
 	/**
 	 * コンストラクタ。
-	 *
 	 * @param baseDate 計算基準日
 	 * @param results 日付計算式一覧
 	 */

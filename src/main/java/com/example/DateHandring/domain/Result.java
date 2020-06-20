@@ -18,7 +18,7 @@ public class Result {
 	public Result(DateFormula formula) {
 		this.formula = formula;
 	}
-	public int getId() {
+	public String getId() {
 		return formula.getId();
 	}
 

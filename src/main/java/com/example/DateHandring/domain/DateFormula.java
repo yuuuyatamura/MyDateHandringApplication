@@ -1,5 +1,10 @@
 package com.example.DateHandring.domain;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import lombok.Data;
 
 //@Data付けてるからgetter、setterいらない
@@ -8,10 +13,15 @@ import lombok.Data;
 public class DateFormula {
 
 	public DateFormula() {}
-
-	private int id;
+	@NotBlank
+	@Length(min = 1,max = 4)
+	private String id;
+	@NotBlank
 	private String name;
+	@NotNull
 	private int year;
+	@NotNull
 	private int month;
+	@NotNull
 	private int day;
 }
