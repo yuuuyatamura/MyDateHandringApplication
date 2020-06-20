@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="comm.js"></script>
+<meta charset="UTF-8"></meta>
+<title>日付登録画面</title>
+<!-- UIkit CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/css/uikit.min.css" />
+
+<!-- jQuery is required -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- UIkit JS -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit-icons.min.js"></script>
+</head>
+<body>
+	<div class="uk-container">
+           <div class="uk-card uk-card-body uk-card-primary">
+               <form action="#" th:action="@{/register}" method="post">
+               	<fieldset class="uk-fieldset">
+               		<legend class="uk-legend">日付ID</legend>
+                	<div class="uk-margin">
+			            <input id="id" class="uk-input" type="text" placeholder="1" th:field="${dateFormula.id}"/>
+			            <p class="uk-text-danger" th:if="${#fields.hasErrors('dateFormula.id')}" th:errors="${dateFormula.id}" />
+			        </div>
+			        <legend class="uk-legend">日付名</legend>
+                	<div class="uk-margin">
+			            <input id="name" class="uk-input" type="text" placeholder="翌月末" th:field="${dateFormula.name}"/>
+			            <p class="uk-text-danger" th:if="${#fields.hasErrors('dateFormula.name')}" th:errors="${dateFormula.name}" />
+			        </div>
+			        <legend class="uk-legend">加減値(年)</legend>
+                	<div class="uk-margin">
+			            <input id="year" class="uk-input" type="text" placeholder="1" th:field="${dateFormula.year}"/>
+			            <p class="uk-text-danger" th:if="${#fields.hasErrors('dateFormula.year')}" th:errors="${dateFormula.year}" />
+			        </div>
+			       <legend class="uk-legend">加減値(月)</legend>
+                	<div class="uk-margin">
+			            <input id="month" class="uk-input" type="text" placeholder="1" th:field="${dateFormula.month}"/>
+			            <p class="uk-text-danger" th:if="${#fields.hasErrors('dateFormula.month')}" th:errors="${dateFormula.month}" />
+			        </div>
+			        <legend class="uk-legend">加減値(日)</legend>
+                	<div class="uk-margin">
+			            <input id="day" class="uk-input" type="text" placeholder="1" th:field="${dateFormula.day}"/>
+			            <p class="uk-text-danger" th:if="${#fields.hasErrors('dateFormula.day')}" th:errors="${dateFormula.day}" />
+			        </div>
+
+			        <button id="registerButton" name="DateHandring" class="uk-button uk-button-default">登録</button>
+			        <a id="backButton" class="uk-button uk-button-default uk-align-right" href="/">戻る</a>
+			    </fieldset>
+               </form>
+           </div>
+       </div>
+<body>
+</html>
+

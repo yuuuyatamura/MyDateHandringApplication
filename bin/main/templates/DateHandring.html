@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="comm.js"></script>
+    <meta charset="UTF-8"></meta>
+    <title>日付計算画面</title>
+            <!-- UIkit CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/css/uikit.min.css" />
+
+		<!-- jQuery is required -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- UIkit JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.25/js/uikit-icons.min.js"></script>
+</head>
+<body>
+	<form action="#" th:action="@{/}" method="post">
+		<div class="uk-container">
+	            <div class="uk-card uk-card-body uk-card-primary">
+	                <fieldset class="uk-fieldset">
+	                	<legend class="uk-legend">計算の基準となる日付を入力してください。</legend>
+
+		               	<div class="uk-margin">
+					        <input id="baseDate" class="uk-input" type="text" placeholder="20181101" th:field="${simulationForm.baseDate}"/>
+					        <p class="uk-text-danger" th:if="${#fields.hasErrors('simulationForm.baseDate')}" th:errors="${simulationForm.baseDate}" />
+					    </div>
+					    <button id="simulationButton" name="DateHandring" class="uk-button uk-button-default">計算実行</button>
+					    <a id="registerButton" class="uk-button uk-button-default" href="register">新規登録</a>
+					</fieldset>
+	            </div>
+	        </div>
+	</form>
+<div class="uk-container">
+    <div class="uk-card uk-card-body uk-card-primary">
+    <table class="uk-table uk-table-striped uk-table-hover uk-table-justify uk-table-middle">
+	    <thead>
+	    <tr>
+	    	<th>No.</th>
+	    	<th>日付ID</th>
+	    	<th>日付名</th>
+	    	<th>計算結果</th>
+	    	<th>計算式(年 月 日)</th>
+	    	<th>編集</th>
+	    </tr>
+	    </thead>
+	    <tbody th:remove="all-but-first" th:each="dateFormula, stat : ${results}">
+			<tr>
+				<td th:text="${stat.count}">1</td>
+				<td th:id="${stat.count} + '_id'" th:text="${dateFormula.id}">1</td>
+				<td th:id="${stat.count} + '_name'" th:text="${dateFormula.name}">翌月末</td>
+				<td th:id="${stat.count} + '_calculated'" th:text="${dateFormula.calculated}">20181231</td>
+				<td th:id="${stat.count} + '_ymdFormula'" th:text="${dateFormula.ymdFormula}">0/1/99</td>
+				<td>
+					<a th:id="${stat.count} + '_updateButton'" class="uk-button uk-button-default" th:href="@{/update/{id}(id=${dateFormula.id})}">更新</a>
+					<form action="#" th:action="@{/{id}(id=${dateFormula.id})}" method="post">
+	            		<button th:id="${stat.count} + '_deleteButton'" name="delete" class="uk-button uk-button-danger">削除</button>
+	            	</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    </div>
+</div>
+<body>
+</html>
+
