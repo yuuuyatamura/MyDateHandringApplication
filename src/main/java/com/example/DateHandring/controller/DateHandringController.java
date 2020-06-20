@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.DateHandring.domain.Result;
@@ -25,25 +26,29 @@ public class DateHandringController {
 //日付登録画面に遷移
 	@GetMapping("/")
 	public String postHandringRequest(@ModelAttribute SimulationForm form) {
-		System.out.println("画面の初期表示");
 		return "DateHandring";
 	}
 
 
 	@PostMapping("/")
+	//バリデーションのチェック結果はBindoingResultクラスに入っている。
 	public String index(@ModelAttribute @Validated SimulationForm form,BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			return "DateHandring";
 		}
 
 		SimulationForm resultForm = new SimulationForm(form.getBaseDate(), service.search());
-//		System.out.println("確認①" + resultForm);
-		List<Result> result = resultForm.getResults();
-//		System.out.println("確認②" + result);
+		List<Result> results = resultForm.getResults();
 
-		result.stream().forEach(e -> e.setCalculated(service.calculate(form.getBaseDate(), e.getFormula())));
-//		System.out.println("確認③");
-		model.addAttribute("result", result);
+		results.stream().forEach(e -> e.setCalculated(service.calculate(form.getBaseDate(), e.getFormula())));
+		model.addAttribute("results", results);
+		return "DateHandring";
+	}
+
+	@PostMapping("/{id}")
+	public String delete(@PathVariable String id, Model model) {
+		service.delete(id);
+		model.addAttribute("simulationForm", new SimulationForm());
 		return "DateHandring";
 	}
 }
