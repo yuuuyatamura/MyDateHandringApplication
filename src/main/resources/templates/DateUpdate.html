@@ -17,15 +17,46 @@
 <body>
 <div class="uk-container">
     <div class="uk-card uk-card-body uk-card-primary">
-    <h1>日付更新画面</h1>
-    <form method="post" action="/date/register">
-<!-- 	<a href="/date">更新（これから実装）</a>
-	<a href="/date/handring">戻る</a> -->
-	<a id="Newregister" class="uk-button uk-button-default" href="/date">更新（これから実装）</a>
-	<a id="backpage" class="uk-button uk-button-default uk-align-right" href="/date/handring">戻る</a>
+    <form action="#" th:action="@{/update/{id}(id=${dateFormula.id})}" method="post" >
+    	<fieldset class="uk-fieldset">
+
+			<legend class="uk-legend">日付ID</legend>
+			<div class="uk-margin">
+				<!-- <input id="id" class="uk-input" type="text" disabled="disabled" th:field="${dateFormula.id}" /> -->
+				<input id="id" class="uk-input" type="text" th:field="${dateFormula.id}" />
+			</div>
+
+			<legend class="uk-legend">日付名</legend>
+			<div class="uk-margin">
+				<!-- <input id="name" class="uk-input" type="text" disabled="disabled" th:field="${dateFormula.name}" /> -->
+				<input id="name" class="uk-input" type="text" th:field="${dateFormula.name}" />
+			</div>
+
+			<legend class="uk-legend">加減値（年）</legend>
+			<div class="uk-margin">
+				<!-- <input id="year" class="uk-input" type="text" disabled="disabled" th:field="${dateFormula.year}" /> -->
+				<input id="year" class="uk-input" type="text" th:field="${dateFormula.year}" />
+			</div>
+
+			<legend class="uk-legend">加減値（月）</legend>
+			<div class="uk-margin">
+				<!-- <input id="month" class="uk-input" type="text" disabled="disabled" th:field="${dateFormula.month}" /> -->
+				<input id="month" class="uk-input" type="text" th:field="${dateFormula.month}" />
+			</div>
+
+			<legend class="uk-legend">加減値（日）</legend>
+			<div class="uk-margin">
+				<!-- <input id="day" class="uk-input" type="text" disabled="disabled" th:field="${dateFormula.day}" /> -->
+				<input id="day" class="uk-input" type="text" th:field="${dateFormula.day}" />
+			</div>
+
+			<button id="Newregister" name="update" class="uk-button uk-button-default">更新</button>
+			<a id="backpage" class="uk-button uk-button-default uk-align-right" href="/">戻る</a>
+		</fieldset>
     </form>
     </div>
 </div>
+<script src="dist/bundle.js"></script>
 <body>
 </html>
 
