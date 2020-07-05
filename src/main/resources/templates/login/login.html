@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
 	<meta charset="UTF8"></meta>
-	<!--Bootstrapの設定 -->
-	<link th:href="@{/webjars/bootstrap/3.3.71/css/bootstrap.min.css}" rel="stylesheet"></link>
-	<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-	<script th:src="@{/webjars/bootstrap/3.3.71/js/bootstrap.min.js}"></script>
-
-	<title>Login</title>
+	<title>ログイン</title>
 </head>
 
 <body class="text-center">
-	<h1>Login</h1>
-	<form method="post" action="/login">
+	<h1 th:text="ログイン"></h1>
 	<!-- ログインエラーメッセージの表示 -->
 	<!-- エラーメッセージ -->
 	<!-- セキュリティのエラーがあればエラーメッセージを表示する -->
-	<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
-		th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
-		class="text-danger">
-		ログインメッセージ</p>
+	<div th:if="${param.error}" class="text-danger">
+		ユーザー名、またはパスワードが正しくありません
+	</div>
 
-		<!-- ユーザーID -->
-		<label>ユーザーID</label>
-		<input type="text" name="userId" /><br />
-		<br />
-		<!-- パスワード -->
-		<label>パスワード</label>
-		<input type="password" name="password" /><br />
-		<br />
+	<form th:action="@{'/login'}" th:object="${loginForm}" method="post">
+	<div class="form-group" th:classappend="${#fields.hasErrors('userId')}? 'has-error'">
+		<label for="userId" class="control-label">userId</label>
+        <input id="userId" type="text" class="form-control" th:field="*{userId}" name="userId">
+        <span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error-massages">error!</span>
+	</div>
+
+	<div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error'">
+		<label for="password" class="control-label">password</label>
+        <input id="password" type="text" class="form-control" th:field="*{password}" name="password">
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-massages">error!</span>
+	</div>
+
 		<!-- ログインボタン -->
-
 		<button class="btn btn-primary" type="submit">ログイン</button>
 	</form>
 	<br />
