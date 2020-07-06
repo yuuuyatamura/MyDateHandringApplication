@@ -7,11 +7,13 @@ import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 import org.seasar.doma.SelectType;
 import org.seasar.doma.boot.ConfigAutowireable;
+import org.springframework.stereotype.Repository;
 
 import com.example.DateHandring.domain.dto.UserRole;
 
 @ConfigAutowireable
 @Dao
+@Repository // <- 追加
 public interface UserRoleDao {
 
     @Select

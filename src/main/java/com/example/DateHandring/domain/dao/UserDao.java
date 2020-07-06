@@ -7,12 +7,14 @@ import org.seasar.doma.Dao;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.DateHandring.domain.dto.User;
 
 @Dao
 @ConfigAutowireable
+@Repository
 public interface UserDao {
     /**
      * ユーザーを取得します。
@@ -22,7 +24,6 @@ public interface UserDao {
 
     @Select
     Optional<User> select(User user);
-
 
     @Insert
     @Transactional

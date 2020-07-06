@@ -6,12 +6,13 @@ import java.time.LocalDateTime;
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.Version;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
-@Entity// 自動的にシステム制御項目を更新するためにリスナーを指定する
+@Entity(listener = DefaultEntityListener.class)// 自動的にシステム制御項目を更新するためにリスナーを指定する
 @Data
 public abstract class DomaDtoImpl implements DomaDto,Serializable {
 

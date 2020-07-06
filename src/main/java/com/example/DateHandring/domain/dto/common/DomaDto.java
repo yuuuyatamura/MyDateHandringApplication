@@ -2,7 +2,9 @@ package com.example.DateHandring.domain.dto.common;
 
 import java.time.LocalDateTime;
 
-public interface DomaDto {
+import com.example.DateHandring.common.Dto;
+
+public interface DomaDto extends Dto{
 
 	    String getCreated_by();
 

@@ -23,9 +23,8 @@ public class User extends DomaDtoImpl {
     String name;
 
     @Column
-    String userId;
+    String email;
 
     @Column
     String password;
-
 }

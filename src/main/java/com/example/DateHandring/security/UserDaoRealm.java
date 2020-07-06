@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.example.DateHandring.common.security.BaseRealm;
 import com.example.DateHandring.domain.dao.UserDao;
@@ -24,6 +25,7 @@ import static java.util.stream.Collectors.toSet;
 
 @Component
 @Slf4j
+@Repository
 public class UserDaoRealm extends BaseRealm {
 
     @Autowired
@@ -33,18 +35,18 @@ public class UserDaoRealm extends BaseRealm {
     UserRoleDao userRoleDao;
 
     @Override
-    protected UserDetails getLoginUser(String userId) {
+    protected UserDetails getLoginUser(String email) {
         User user = null;
 
         List<GrantedAuthority> authorityList = null;
 
         try{
             user = new User();
-            user.setUserId(userId);
+            user.setEmail(email);
 
             //ユーザを取得して、セッションに保存
             user = userDao.select(user)
-                    .orElseThrow(() -> new UsernameNotFoundException("no user found. [id=]" + userId + "]"));
+                    .orElseThrow(() -> new UsernameNotFoundException("no user found. [id=]" + email + "]"));
 
             //担当者権限を取得する
             List<UserRole> userRoles = userRoleDao.selectByUserId(user.getId(), toList());
