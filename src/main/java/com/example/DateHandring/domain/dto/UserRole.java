@@ -1,14 +1,17 @@
 package com.example.DateHandring.domain.dto;
 
 import org.seasar.doma.Column;
+import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 
+import com.example.DateHandring.domain.dto.common.DefaultEntityListener;
 import com.example.DateHandring.domain.dto.common.DomaDtoImpl;
 
 import lombok.Data;
 
+@Entity(listener = DefaultEntityListener.class)
 @Data
 public class UserRole extends DomaDtoImpl{
 

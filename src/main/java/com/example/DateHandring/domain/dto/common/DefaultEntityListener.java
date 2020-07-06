@@ -15,8 +15,9 @@ import org.seasar.doma.jdbc.entity.PreUpdateContext;
 import com.example.DateHandring.common.utils.ReflectionUtils;
 import com.example.DateHandring.domain.dto.common.DomaDto;
 import com.example.DateHandring.domain.exception.DoubleSubmitErrorException;
+import com.example.DateHandring.domain.dto.common.DoubleSubmitCheckTokenHolder;
 import lombok.NoArgsConstructor;
-import lombok.val;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 @NoArgsConstructor

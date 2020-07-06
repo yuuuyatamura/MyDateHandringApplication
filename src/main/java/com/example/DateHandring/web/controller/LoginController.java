@@ -1,5 +1,7 @@
 package com.example.DateHandring.web.controller;
 
+import static com.example.DateHandring.common.WebConst.*;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,7 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.DateHandring.common.AbstractHtmlController;
 import com.example.DateHandring.web.form.LoginForm;
-import static com.example.DateHandring.common.WebConst.*;
 
 @Controller
 public class LoginController extends AbstractHtmlController {

@@ -4,12 +4,13 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.Table;
 import org.springframework.data.annotation.Id;
 
+import com.example.DateHandring.domain.dto.common.DefaultEntityListener;
 import com.example.DateHandring.domain.dto.common.DomaDtoImpl;
 
 import org.seasar.doma.*;
 import lombok.Data;
 
-@Entity
+@Entity(listener = DefaultEntityListener.class)
 @Data
 @Table(name = "users")
 public class User extends DomaDtoImpl {

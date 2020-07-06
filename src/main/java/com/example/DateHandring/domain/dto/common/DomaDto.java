@@ -2,7 +2,7 @@ package com.example.DateHandring.domain.dto.common;
 
 import java.time.LocalDateTime;
 
-import com.example.DateHandring.common.Dto;
+import com.example.DateHandring.domain.dto.common.*;
 
 public interface DomaDto extends Dto{
 
